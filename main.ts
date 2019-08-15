@@ -3,9 +3,13 @@ motobit.enable(MotorPower.On)
 motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 0)
 motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 0)
 let was = 0
-while (true) {
+basic.forever(function () {
+    basic.showNumber(was)
+    basic.pause(100)
+})
+
+basic.forever(function () {
     let c = twist.getCount(63)
-    basic.showNumber(c)
     if (c != was) {
         was = c
         if (c > 0) {
@@ -24,5 +28,4 @@ while (true) {
             motobit.setMotorSpeed(Motor.Right, MotorDirection.Reverse, c)
         }
     }
-    basic.pause(100)
-}
+})
